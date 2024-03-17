@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .update-info-message {
+        background-color: #4CAF50; 
+        color: #fff; 
+        padding: 20px; 
+        border-radius: 8px; 
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    }
+
+        .update-info-message h1 {
+            margin: 0; 
+            font-size: 28px; 
+        }
+
+</style>
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--Filtreleme Kısmı-->
+            <form class="form-horizontal">
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Least</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Least(Price)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Most</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Most(Price)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">City</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="City">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">District</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="District">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Neighborhood</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Neighborhood">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Situation</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Situation">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Type</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Type">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search" aria-hidden="true"></i> FILTER</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-9">
+            <div class="update-info-message">
+                <h1>Your Information Has Been Updated</h1>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+</div>
+

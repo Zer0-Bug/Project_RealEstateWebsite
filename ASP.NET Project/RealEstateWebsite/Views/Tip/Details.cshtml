@@ -1,0 +1,80 @@
+﻿@model RealEstateWebsite.Models.Ilan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    @{ int i = 0;}
+                    @foreach (var item in ViewBag.imgs)
+                    {
+                        i++;
+                        var active = i == 1 ? "active" : "";
+                        <div class="item @active">
+                            <img src="/Content/Images/@item.ResimAd" alt="..." style="width:1150px;height:400px;">
+
+                        </div>
+
+                    }
+
+
+
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!--Slider-->
+        <div class="col-md-4">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr><th colspan="2">ADVERTISE FEATURES</th></tr>
+                    <tr><td><strong>EXPLANATION</strong> </td><td>@Model.Acıklama</td></tr>
+                    <tr><td><strong>PRICE</strong> </td><td>@Model.Fiyat</td></tr>
+                    <tr><td><strong>SITUATION</strong> </td><td>@Model.Tip.Durum.DurumAd</td></tr>
+                    <tr><td><strong>TYPE</strong> </td><td>@Model.Tip.TipAd</td></tr>
+                    <tr><td><strong>AREA</strong> </td><td>@Model.Alan m<sup>2</sup></td></tr>
+                    <tr><td><strong>NUMBER OF ROOMS</strong> </td><td>@Model.OdaSayisi</td></tr>
+                    <tr><td><strong>NUMBER OF BATHROOMS</strong> </td><td>@Model.BanyoSayisi</td></tr>
+                    <tr><td><strong>FLOOR</strong> </td><td>@Model.Kat</td></tr>
+                    <tr><td><strong>ADDRESS</strong> </td><td>@Model.Adres</td></tr>
+                    <tr><td><strong>NEIGHBORHOOD</strong> </td><td>@Model.Mahalle.MahalleAd</td></tr>
+                    <tr><td><strong>DISTRICT</strong> </td><td>@Model.Mahalle.Semt.SemtAd</td></tr>
+                    <tr><td><strong>CITY</strong> </td><td>@Model.Mahalle.Semt.Sehir.SehirAd</td></tr>
+                    <tr>
+                        <td><strong>CREDIT</strong> </td>
+                        <td>
+                            @if (Model.Kredi == true)
+                            {
+                                <label class="label label-success">YES</label>
+                            }
+                            else
+                            {
+                                <label class="label label-danger">NO</label>
+                            }
+                        </td>
+                    </tr>
+                    <tr><td><strong>PHONE</strong> </td><td><button class="btn btn-success btn-block"> <i class="fa fa-phone" aria-hidden="true"></i> @Model.Telefon</button> </td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

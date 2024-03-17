@@ -1,0 +1,27 @@
+﻿@model RealEstateWebsite.Models.Durum
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Situation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DurumAd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DurumAd)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DurumId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

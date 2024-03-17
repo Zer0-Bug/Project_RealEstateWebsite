@@ -1,0 +1,9 @@
+﻿<option value="">Choose District</option>
+@if (ViewBag.semtlistesi != null)
+{
+    foreach (var item in ViewBag.semtlistesi)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+}
+

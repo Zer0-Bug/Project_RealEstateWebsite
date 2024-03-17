@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RealEstateWebsite.Models.Ilan>
+@{ int i = 0;}
+@foreach (var item in Model)
+{
+    i++;
+    var c = 1;
+    var active = i == 1 ? "active" : "";
+    <div class="item @active">
+        @foreach (var rsm in ViewBag.imgs)
+        {
+            if (rsm.IlanId == item.IlanId)
+            {
+                if (@c == 1)
+                {
+                    <a href="/Home/Details/@item.IlanId"><img src="/Content/images/@rsm.ResimAd" alt="..." style="width:1150px;height:400px;"></a>
+                    c++;
+                }
+
+            }
+        }
+
+
+    </div>
+}
+

@@ -1,0 +1,3 @@
+After adding the database to your SQL Manager, you need to make the following changes:
+
+In the outer Web.config file part of the ASP.NET Solution Explorer, update the `connectionString` values with your specific connection string. Ensure that your SQL Manager is configured in Windows Authentication mode, and the server name used in the connection string should match the one you use when logging into the SQL Manager.

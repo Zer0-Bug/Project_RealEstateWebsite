@@ -1,0 +1,8 @@
+﻿
+@model IEnumerable<RealEstateWebsite.Models.Tip>
+@foreach (var item in Model)
+{
+    <li><a href="/Home/MenuFiltre/@item.TipId">@item.TipAd</a></li>
+
+}
+

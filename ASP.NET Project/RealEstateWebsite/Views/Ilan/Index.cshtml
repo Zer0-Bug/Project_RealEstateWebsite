@@ -1,0 +1,101 @@
+﻿@model IEnumerable<RealEstateWebsite.Models.Ilan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="container">
+
+        <div class="row">
+
+            @Html.Action("PartialFiltre", "Home")
+            <!--ilan Listesi-->
+            <br />
+            <div class="col-md-9">
+                <div class="thumbnail" style="width:845px;">
+
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/Home/Index">Anasayfa</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Ilan Listesi</li>
+                        </ol>
+                    </nav>
+
+                    <br />
+                    <table class="table">
+                        <tr>
+                            <th>
+                                Mahalle
+                            </th>
+                            <th>
+                                Tip
+                            </th>
+
+
+                            <th>
+                                Adres
+                            </th>
+
+                            <th>
+                                Şehir
+                            </th>
+                            <th>
+                                Semt
+                            </th>
+                            <th>
+                                Durum
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mahalle.MahalleAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tip.TipAd)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Adres)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mahalle.Semt.Sehir.SehirAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Mahalle.Semt.SemtAd)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Tip.Durum.DurumAd)
+                                </td>
+                                <td>
+                                    <a class="btn btn-success" href="@Url.Action("Images", new { id = item.IlanId })"><i class="fa fa-camera" aria-hidden="true"></i> ADD IMAGE</a>
+                                    <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.IlanId })"><i class="fa fa-edit" aria-hidden="true"></i> EDIT</a>
+                                    <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.IlanId })"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+                                    @if (item.Confirmation == 0 || item.Confirmation == null)
+                                    {
+                                        <a class="btn btn-warning" href="@Url.Action("Details","Home", new { id = item.IlanId })"><i class="fa fa-eye" aria-hidden="true"></i> HOLD </a>
+
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-success" href="@Url.Action("Details","Home", new { id = item.IlanId })"><i class="fa fa-eye" aria-hidden="true"></i> CONFIRMED </a>
+
+                                    }
+                                </td>
+                            </tr>
+                        }
+
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

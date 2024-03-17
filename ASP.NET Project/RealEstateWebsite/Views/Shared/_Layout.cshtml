@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>REAL ESTATE WEBSITE</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link href="/Content/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/Content/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+    <header>
+        <!--menü çubuğu
+            <div class="container">
+                <br />
+            </div>
+
+
+            -->
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" style="padding:10px" href="/Home/Index"> <img src="~/Content/Images/Logo.png" width="70" height="35" /></a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                    @Html.Partial("Arama")
+                    <ul class="nav navbar-nav navbar-left">
+
+                        <li class="dropdown">
+                            @Html.Action("DurumAd1", "Tip")
+                            <ul class="dropdown-menu">
+                                @Html.Action("DurumTip1", "Tip")
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            @Html.Action("DurumAd2", "Tip")
+                            <ul class="dropdown-menu">
+                                @Html.Action("DurumTip2", "Tip")
+
+                            </ul>
+                        </li>
+                    </ul>
+                    @Html.Partial("LoginPartial")
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+    </header>
+    @RenderBody()
+    <!--FOOTER-->
+    
+
+        <footer>
+    
+     <div class="container">
+         <div class="row well" style="background-color:black">
+             <div class="col-md-9">
+                 <h5 class="text-uppercase" style="color:white">CONTACT</h5>
+                 <ul class="list-unstyled">
+                     @Html.Action("Durum", "Durum")
+                 </ul>
+             </div>
+             <div class="col-md-3">
+                 <h5 class="text-uppercase" style="color:white">SOCIAL MEDIA</h5>
+                 <ul class="list-unstyled">
+                     <li>
+                         <a href="https://www.facebook.com/" style="color:white"> <img src="~/Content/Images/sosyal medya/facebook.jpg" width="50" /></a>
+                         <a href="https://twitter.com/explore" style="color:white"> <img src="~/Content/Images/sosyal medya/x.jpg" width="50" /></a>
+                         <a href="https://www.youtube.com/" style="color:white"> <img src="~/Content/Images/sosyal medya/youtube.jpg" width="50" /></a>
+                     </li>
+
+                 </ul>
+             </div>
+         </div>
+     </div>
+     </footer>
+
+   
+    
+
+
+
+
+</body>
+</html>

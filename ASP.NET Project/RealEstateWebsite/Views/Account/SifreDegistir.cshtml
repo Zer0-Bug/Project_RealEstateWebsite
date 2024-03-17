@@ -1,0 +1,74 @@
+﻿@model RealEstateWebsite.Models.SifreDegistirme
+@{
+    ViewBag.Title = "SifreDegistir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        @Html.Action("PartialFiltre", "Home")
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-9">
+            <div class="thumbnail" style="width:845px;">
+
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">MAIN PAGE</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+                    </ol>
+                </nav>
+
+
+                @using (Html.BeginForm("SifreDegistir", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Old Password</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(m => m.OldPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.OldPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">New Password</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(m => m.NewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.NewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Password Again</label>
+                        <div class="col-sm-4">
+                            @Html.PasswordFor(m => m.ConNewPassword, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.ConNewPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group ">
+
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i> Change Your Password</button>
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>
+

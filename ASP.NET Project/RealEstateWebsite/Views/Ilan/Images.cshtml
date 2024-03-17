@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Images";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    @{
+        Html.BeginForm("Images", "Ilan", FormMethod.Post, new { enctype = "multipart/Form-data" });
+        foreach (var item in ViewBag.ilan)
+        {
+            <div class="container mt-4">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Add Image</h5>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>Choose Image</td>
+                                            <td><input type="hidden" name="id" value="@item.IlanId" /></td>
+                                            <td><input type="file" name="file" class="form-control-file" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3">
+                                                <input type="submit" value="Add" class="btn btn-primary" />
+                                                <span class="ml-2">
+                                                    @Html.ActionLink("List Of Advertises", "Index", null, new { @class = "btn btn-warning" })
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        }
+    }
+    <!--
+
+    <table>
+                <tr>
+                    <td>Choose Image</td>
+                    <td><input type="hidden" name="id" value="item.IlanId" /></td>
+                    <td><input type="file" name="file" /> </td>
+                    <td><input type="submit" value="Add" class="btn btn-primary" /></td>
+                    <td>- @Html.ActionLink("List Of Advertises", "Index", null, new { @class = "btn btn-warning" })</td>
+                </tr>
+            </table>
+
+
+        -->
+    <br />
+    <div class="row">
+        @foreach (var item in ViewBag.rsml)
+        {
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <img src="~/Content/Images/@item.ResimAd" height="250" width="250" />
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<RealEstateWebsite.Models.Tip>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-3">
+            <br />
+            <!--Filtreleme Kısmı-->
+            <form class="form-horizontal">
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label"> Least</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Least(Price)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Most</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Most(Prize)">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">City</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="City">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">District</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="District">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Neighborhood</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Neighborhood">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Situation</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Situation">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label">Type</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" placeholder="Type">
+                    </div>
+                </div>
+
+
+
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-6">
+                        <button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search" aria-hidden="true"></i> FILTER</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-9">
+            <div class="thumbnail" style="width:845px;">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Admin/Index">ADMIN PAGE</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">LIST OF TYPES</li>
+                    </ol>
+                </nav>
+                <a class="btn btn-primary btn-block" href="@Url.Action("Create")">Add Type</a>
+                <br />
+                <table class="table">
+                    <tr>
+                        <th>
+                            Situation Name
+                        </th>
+                        <th>
+                            Type Name
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Durum.DurumAd)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TipAd)
+                            </td>
+                            <td>
+                                <a class="btn btn-primary" href="@Url.Action("Edit", new { id = item.TipId })"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a>
+                                <a class="btn btn-danger" href="@Url.Action("Delete", new { id = item.TipId })"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+

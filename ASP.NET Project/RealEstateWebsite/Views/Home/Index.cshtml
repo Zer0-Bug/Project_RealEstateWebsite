@@ -1,0 +1,179 @@
+﻿@model IEnumerable<RealEstateWebsite.Models.Ilan>
+@{
+    ViewBag.Title = "Index1";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    
+</head>
+
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        @Html.Action("Slider", "Home")
+
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            @Html.Action("PartialFiltre", "Home")
+
+            <!--ilan Listesi-->
+            <br />
+            @foreach (var item in Model)
+            {
+                var c = 1;
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail">
+                        @foreach (var img in ViewBag.imgs)
+                        {
+                            if (img.IlanId == item.IlanId)
+                            {
+                                if (@c == 1)
+                                /*ilanın birden fazla resmi varsa sadece ilk resmi gelsin.*/
+                                {
+                                    <a href="/Home/Details/@item.IlanId"> <img src="/Content/Images/@img.ResimAd" style="height:250px;" alt="..."></a>
+                                    c++;
+                                }
+
+                            }
+                        }
+
+                        <div class="caption">
+                            <p><strong>@item.Tip.Durum.DurumAd </strong> (@item.Tip.TipAd)</p>
+                            <p>@item.Mahalle.Semt.Sehir.SehirAd - @item.Mahalle.Semt.SemtAd</p>
+                            <p>
+                                <button class="btn" style="background-color:#ff0000; color:white">@item.Fiyat (₺)</button>
+                                <button class="btn btn-primary">@item.Alan m<sup>2</sup></button>
+                                <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> @item.OdaSayisi</button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <!--
+     <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide2.jpg" style="height: 230px; width: 300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide3.jpg" style="height: 230px; width: 300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide4.jpg" style="height: 230px; width: 300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide5.jpg" style="height: 230px; width: 300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide7.jpg" style="height: 230px; width: 300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-4 col-lg-3">
+        <div class="thumbnail">
+            <img src="~/Content/Images/slide8.jpg" style="height:230px; width:300px;" alt="...">
+            <div class="caption">
+                <p><strong>ADVERTISE STATUS </strong> TYPE</p>
+                <p>CITY - DISTRICT</p>
+                <p>
+                    <button class="btn" style="background-color:#ff0000; color:white">price</button>
+                    <button class="btn btn-primary">Area m<sup>2</sup></button>
+                    <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> Rooms</button>
+                </p>
+            </div>
+        </div>
+    </div>
+    -->
+
+
+
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

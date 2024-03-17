@@ -1,0 +1,83 @@
+﻿@model RealEstateWebsite.Models.ProfilGuncelleme
+@{
+    ViewBag.Title = "Profil";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        @Html.Action("PartialFiltre", "Home")
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-9">
+            <div class="thumbnail" style="width:845px;">
+
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Home/Index">Main Page</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Profil Update</li>
+                    </ol>
+                </nav>
+
+
+                @using (Html.BeginForm("Profil", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(model => model.id)
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Surname</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Surname, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">UserName</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Username, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-4">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+
+                        <div class="col-sm-10 col-sm-offset-2">
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i> Update</button>
+                            or <a href="/Account/SifreDegistir">Change Password</a>
+                            <!--<a href="@Url.Action("SifreDegistir", "Account")">
+                            <span>Change Password</span>
+                        </a>-->
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+</div>

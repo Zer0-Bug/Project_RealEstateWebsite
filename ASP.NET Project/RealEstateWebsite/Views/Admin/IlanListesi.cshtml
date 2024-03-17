@@ -1,0 +1,130 @@
+﻿@model IEnumerable<RealEstateWebsite.Models.Ilan>
+@{
+    ViewBag.Title = "IlanListesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+<div class="container">
+
+    <div class="row">
+        
+
+        <!--ilan Listesi-->
+        <br />
+        <div class="col-md-12 ">
+            <div class="thumbnail" style="width:1096px;">
+
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/Admin/Index">ADMIN PAGE</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">ADVERTISE LIST</li>
+                    </ol>
+                </nav>
+
+                <br />
+                <table class="table">
+                    <tr>
+                        <th>
+                            USER NAME
+                        </th>
+                        <th>
+                            NEIGHBORHOOD
+                        </th>
+                        <th>
+                            TYPE
+                        </th>
+
+
+                        <th>
+                            ADDRESS
+                        </th>
+
+                        <th>
+                            CITY
+                        </th>
+                        <th>
+                            DISTRICT
+                        </th>
+                        <th>
+                            SITUATION
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+                            CONFIRM
+                        </th>
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                <tr>
+                    <td>
+                        <button class="btn btn-primary">@item.UserName</button>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mahalle.MahalleAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tip.TipAd)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Adres)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mahalle.Semt.Sehir.SehirAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Mahalle.Semt.SemtAd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tip.Durum.DurumAd)
+                    </td>
+                    <td>
+                        @if (item.Confirmation == 0 || item.Confirmation == null)
+                        {
+                        <a class="btn btn-warning" href="@Url.Action("Details","Home", new { id = item.IlanId })"><i class="fa fa-eye" aria-hidden="true"></i> HOLD </a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-success" href="@Url.Action("Details","Home", new { id = item.IlanId })"><i class="fa fa-eye" aria-hidden="true"></i> CONFIRMED </a>
+
+                        }
+                    </td>
+                    <td>
+                        @if (item.Confirmation == 0 || item.Confirmation == null)
+                        {
+                            <a class="btn btn-info" href="@Url.Action("AcceptAds","Ilan", new { id = item.IlanId })"><i class="fa fa-check" aria-hidden="true"></i> ACCEPT</a>
+
+                        }
+                        else
+                        {
+                            <a class="btn btn-warning" href="@Url.Action("RejectAds","Ilan", new { id = item.IlanId })"><i class="fa fa-times" aria-hidden="true"></i> REJECT</a>
+
+                        }
+                    </td>
+                    <td>
+
+                        <a class="btn btn-danger" href="@Url.Action("Delete","Ilan", new { id = item.IlanId })"><i class="fa fa-trash" aria-hidden="true"></i> DELETE</a>
+                    </td>
+                </tr>
+                    }
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

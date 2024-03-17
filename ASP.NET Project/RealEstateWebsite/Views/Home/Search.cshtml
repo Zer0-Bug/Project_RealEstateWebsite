@@ -1,0 +1,51 @@
+﻿@model  IEnumerable<RealEstateWebsite.Models.Ilan>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        @Html.Action("PartialFiltre", "Home")
+
+        <!--ilan Listesi-->
+        <br />
+        @foreach (var item in Model)
+        {
+            var c = 1;
+            <div class="col-sm-6 col-md-3">
+                <div class="thumbnail">
+                    @foreach (var rsm in ViewBag.imgs)
+                    {
+                        if (rsm.IlanId == item.IlanId)
+                        {
+                            if (@c == 1)
+                            {
+                                <a href="/Home/Details/@item.IlanId"> <img src="/Content/images/@rsm.ResimAd" style="height:300px;" alt="..."></a>
+                                c++;
+                            }
+
+                        }
+                    }
+
+                    <div class="caption">
+                        <p><strong>@item.Tip.Durum.DurumAd </strong> (@item.Tip.TipAd)</p>
+                        <p>@item.Mahalle.Semt.Sehir.SehirAd - @item.Mahalle.Semt.SemtAd</p>
+                        <p>
+                            <button class="btn" style="background-color:#ff0000; color:white">@item.Fiyat (₺)</button>
+                            <button class="btn btn-primary">@item.Alan m<sup>2</sup></button>
+                            <button class="btn btn-success pull-right"><i class="fa fa-bed" aria-hidden="true"></i> @item.OdaSayisi</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+
+
+
+
+    </div>
+</div>
